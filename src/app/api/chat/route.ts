@@ -1,5 +1,5 @@
 import { createOpenAI } from '@ai-sdk/openai';
-import { generateText, streamText } from 'ai';
+import { streamText } from 'ai';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
