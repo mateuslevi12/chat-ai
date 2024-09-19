@@ -18,8 +18,8 @@ export async function POST(req: Request) {
       }
 
       const result = await streamText({
-          model: openai('gpt-3.5-turbo'),
-          messages
+          model: openai('gpt-4o'),
+          messages,
       });
 
       // console.log(text)
