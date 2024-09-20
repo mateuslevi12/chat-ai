@@ -78,7 +78,7 @@ export function Chat() {
               {message.role === "assistant" && (
                 <Avatar>
                   <AvatarFallback>AI</AvatarFallback>
-                  <AvatarImage src="https://github.com/termux.png" />
+                  <AvatarImage src="./favicon.ico" />
                 </Avatar>
               )}
 
@@ -95,7 +95,7 @@ export function Chat() {
             <div className="flex gap-3 text-slate-600 text-sm mb-5">
               <Avatar>
                 <AvatarFallback>AI</AvatarFallback>
-                <AvatarImage src="https://github.com/termux.png" />
+                <AvatarImage src="./favicon.ico"/>
               </Avatar>
               <p className="leading-relaxed">
                 <span className="block font-bold text-slate-700">IA:</span>
