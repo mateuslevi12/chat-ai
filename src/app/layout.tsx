@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Chat AI",
-  description: "Using Vercel SDK to create a chat bot.",
+  title: "HealthAI",
+  description: "Assistente de inteligência artificial focada em fornecer informações detalhadas e precisas sobre o programa Previne Brasil.",
 };
 
 export default function RootLayout({
