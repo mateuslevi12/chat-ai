@@ -28,7 +28,8 @@ export function Chat() {
       return;
     }
 
-    setMessages((prevMessages) => [...prevMessages, { role: 'user', content: input }]);
+    const updatedMessages = [...messages, { role: 'user', content: input }];
+    setMessages(updatedMessages); 
     setLoading(true); 
     setInput(''); 
 
@@ -37,14 +38,21 @@ export function Chat() {
       headers: {
         'Content-Type': 'application/json',
       },
+
       body: JSON.stringify({
-        prompt: input, 
+        messages: updatedMessages, 
       }),
     });
 
     if (res.ok) {
       const data = await res.json();
-      setMessages((prevMessages) => [...prevMessages, { role: 'assistant', content: data.content }]);
+
+      const newMessage = {
+        role: data.content.role,
+        content: data.content.content
+      };
+
+      setMessages([...updatedMessages, newMessage]);
     } else {
       console.error('Erro ao chamar a API');
     }
@@ -55,7 +63,6 @@ export function Chat() {
   return (
     <Card className="w-[90%] sm:w-[50%]">
       <CardHeader>
-      
         <CardTitle className="flex gap-2 items-center"><Cross color="red" size={30}/> HealthAI</CardTitle>
         <CardDescription>
         Assistente de inteligência artificial focada em fornecer informações detalhadas e precisas sobre o programa Previne Brasil.

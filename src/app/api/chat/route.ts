@@ -13,26 +13,16 @@ export async function POST(req: Request) {
         const body = await req.json();
         console.log("Corpo da requisição:", body);
 
-        const { prompt } = body;
+        const { messages } = body;
 
-        if (!prompt || typeof prompt !== 'string') {
-            return new Response('O prompt deve ser uma string válida.', { status: 400 });
-        }
-
-        const result = await openai.completions.create({
+        const result = await openai.chat.completions.create({
             model: modelId,
-            prompt: prompt,
-            max_tokens: 150,
-            temperature: 0.2,
-            stop: ["\n", "Como", "Por que", "Qual"],
-            frequency_penalty: 1.0,
-            presence_penalty: 0.8,
-            top_p: 0.9,
-            
+            messages,
+            max_tokens: 250,
+            temperature: 0.8,
         });
-        
-
-        const completion = result.choices[0].text
+    
+        const completion = result.choices[0].message
         return new Response(JSON.stringify({ role: "system", content: completion }), {
             status: 200,
             headers: { 'Content-Type': 'application/json' },
