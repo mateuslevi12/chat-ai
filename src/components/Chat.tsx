@@ -18,7 +18,7 @@ import { Cross } from 'lucide-react';
 export function Chat() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<{ role: string, content: string }[]>([]);
-  const [loading, setLoading] = useState(false); // Adicionando estado de loading
+  const [loading, setLoading] = useState(false); 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,8 +29,8 @@ export function Chat() {
     }
 
     setMessages((prevMessages) => [...prevMessages, { role: 'user', content: input }]);
-    setLoading(true); // Ativar o estado de loading
-    setInput(''); // Limpar o campo de input
+    setLoading(true); 
+    setInput(''); 
 
     const res = await fetch('/api/chat', {
       method: 'POST',
@@ -49,7 +49,7 @@ export function Chat() {
       console.error('Erro ao chamar a API');
     }
 
-    setLoading(false); // Desativar o estado de loading após a resposta
+    setLoading(false); 
   };
 
   return (
@@ -91,7 +91,6 @@ export function Chat() {
             </div>
           ))}
 
-          {/* Mostrar "Carregando..." enquanto a resposta do assistente não chegar */}
           {loading && (
             <div className="flex gap-3 text-slate-600 text-sm mb-5">
               <Avatar>
