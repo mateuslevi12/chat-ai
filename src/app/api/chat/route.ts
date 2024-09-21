@@ -21,7 +21,8 @@ export async function POST(req: Request) {
             max_tokens: 250,
             temperature: 0.8,
         });
-    
+ 
+        
         const completion = result.choices[0].message
         return new Response(JSON.stringify({ role: "system", content: completion }), {
             status: 200,
